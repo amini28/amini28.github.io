@@ -415,9 +415,13 @@ function showPrivacyApp(appName) {
     <h2>Third-party services</h2>
     <p>This app does not include any third-party analytics, advertising, or tracking SDKs. The only external service used is Apple's own infrastructure (iCloud, CloudKit, StoreKit, etc.) where noted above, which is governed by Apple's Privacy Policy.</p>
     <h2>Data deletion</h2>
-    <p>All data stored by this app can be deleted at any time by uninstalling the app from your device. If you have enabled iCloud sync, you can also delete your iCloud data by going to Settings → [Your Name] → iCloud → Manage Storage → ${appName} → Delete Data.</p>
-    <h2>General Privacy Policy</h2>
-    <p>For our complete privacy practices, please see our <a href="#" onclick="showPrivacyGeneral();return false;" style="color:var(--accent-blue);">General Privacy Policy</a>.</p>
+    <p>All app data stored on your device can be deleted by uninstalling the app. If iCloud sync is enabled, you can also delete the associated iCloud data from Settings → [Your Name] → iCloud → Manage Storage on your device.</p>
+    <h2>Contact</h2>
+    <p>Questions about this app's privacy practices? Contact us at:</p>
+    <p style="font-family:'DM Mono',monospace;font-size:13px;color:var(--text);">hello@iosdev.com</p>
+    <div style="margin-top:3rem;padding-top:1.5rem;border-top:0.5px solid var(--border);">
+      <a href="#" onclick="showPrivacyGeneral();return false;" style="font-size:13px;color:var(--text3);text-decoration:none;">&larr; View general privacy policy covering all apps</a>
+    </div>
   `;
   document.getElementById('mainPage').classList.add('hidden');
   document.getElementById('pagePrivacyGeneral').classList.remove('active');
