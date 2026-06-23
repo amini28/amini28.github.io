@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f0f13; --surface: #1a1a24; --card: #222236;
+      --text: #e4e4ef; --muted: #8b8ba0; --accent: #7c5cfc; --accent2: #5c9cfc;
+    }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero { display: flex; flex-direction: column; align-items: center; padding: 80px 20px 40px; text-align: center; background: linear-gradient(180deg, #1a1040 0%, var(--bg) 100%); }
+    .hero img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; margin-bottom: 16px; }
+    .hero h1 { font-size: 2.4rem; margin-bottom: 6px; }
+    .hero p { color: var(--muted); font-size: 1.15rem; }
+
+    /* Stats */
+    .stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 30px 20px; }
+    .stat { text-align: center; }
+    .stat-num { display: block; font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 0.85rem; color: var(--muted); }
+
+    /* Apps */
+    .section { padding: 50px 20px; max-width: 1100px; margin: 0 auto; }
+    .section h2 { font-size: 1.6rem; margin-bottom: 24px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .app-card { background: var(--card); border-radius: 14px; padding: 24px; transition: transform .2s, box-shadow .2s; }
+    .app-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124,92,252,.15); }
+    .app-icon { font-size: 2rem; margin-bottom: 10px; }
+    .app-card h3 { margin-bottom: 4px; }
+    .app-cat { font-size: 0.8rem; color: var(--accent2); text-transform: uppercase; letter-spacing: .5px; }
+    .app-card p { margin-top: 8px; color: var(--muted); font-size: 0.92rem; }
+    .app-link { display: inline-block; margin-top: 12px; font-size: 0.9rem; font-weight: 600; }
+
+    /* About */
+    .about { background: var(--surface); }
+    .about p { color: var(--muted); max-width: 640px; margin-bottom: 18px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { background: var(--card); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 12px; }
+    .contact-links a { font-size: 1rem; }
+
+    footer { text-align: center; padding: 30px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--surface); }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <img src="https://avatars.githubusercontent.com/u/0?v=4" alt="Your Name" />
+  <h1>Your Name</h1>
+  <p>Mobile Developer & Designer</p>
+</section>
+
+<section class="stats">
+        <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Total downloads</span></div>
+        <div class="stat"><span class="stat-num">12</span><span class="stat-label">Published apps</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">Years experience</span></div>
+        <div class="stat"><span class="stat-num">99%</span><span class="stat-label">Client satisfaction</span></div>
+</section>
+
+<section class="section" id="apps">
+  <h2>🚀 Projects</h2>
+  <div class="apps-grid">
+    <div class="app-card">
+      <div class="app-icon">🌤️</div>
+      <h3>WeatherNow</h3>
+      <span class="app-cat">Weather</span>
+      <p>Real-time weather forecasts with beautiful animations</p>
+      <a href="https://github.com/username/weathernow" target="_blank" class="app-link">View Project →</a>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">💰</div>
+      <h3>ExpensePal</h3>
+      <span class="app-cat">Finance</span>
+      <p>Track daily expenses with smart categorization</p>
+      <a href="https://github.com/username/expensepal" target="_blank" class="app-link">View Project →</a>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">💪</div>
+      <h3>FitTrack</h3>
+      <span class="app-cat">Health & Fitness</span>
+      <p>Workout logging with progress charts</p>
+      <a href="https://github.com/username/fittrack" target="_blank" class="app-link">View Project →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <h2>👋 About Me</h2>
+  <p>I build mobile apps that people love to use. Passionate about clean code, intuitive design, and shipping fast.</p>
+  <div class="skills">
+      <span class="skill">Flutter</span>
+      <span class="skill">Kotlin</span>
+      <span class="skill">Swift</span>
+      <span class="skill">React Native</span>
+      <span class="skill">Figma</span>
+      <span class="skill">Firebase</span>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <h2>📬 Get in Touch</h2>
+  <div class="contact-links">
+    <a href="mailto:hello@example.com">✉️ hello@example.com</a>
+    <a href="https://github.com/username" target="_blank">🐙 GitHub</a>
+    <a href="https://linkedin.com/in/username" target="_blank">💼 LinkedIn</a>
+    <a href="https://x.com/username" target="_blank">🐦 Twitter</a>
+  </div>
+</section>
+
+<footer>© Your Name · Generated by Portfolio Agent</footer>
+</body>
+</html>
