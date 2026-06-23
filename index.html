@@ -384,23 +384,29 @@ function showPrivacyApp(appName) {
   if (app.healthData) badges.push({ label: 'Health data (on-device)', color: '#fff7ed', border: 'rgba(234,88,12,0.2)', text: '#9a3412' });
   if (app.iCloud) badges.push({ label: 'iCloud sync (optional)', color: '#eff6ff', border: 'rgba(29,78,216,0.2)', text: '#1e40af' });
   if (app.camera) badges.push({ label: 'Camera access', color: '#fdf4ff', border: 'rgba(126,34,206,0.2)', text: '#6b21a8' });
-  if (app.notifications) badges.push({ label: 'Notifications', color: '#fefce8', border: 'rgba(202,138,4,0.2)', text: '#854d0e' });
+  if (app.notifications) badges.push({ label: 'Notifications', color: '#fef9c3', border: 'rgba(161,98,7,0.2)', text: '#92400e' });
 
-  let html = '<button class="privacy-back" onclick="showPrivacyGeneral()">&larr; Back to Privacy Policy</button>';
-  html += '<h1>' + app.icon + ' ' + appName + ' — Privacy</h1>';
-  html += '<div class="privacy-meta">' + app.category + '</div>';
-  html += '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;">';
-  badges.forEach(b => {
-    html += '<span style="font-size:12px;font-weight:500;padding:4px 12px;border-radius:100px;background:' + b.color + ';border:0.5px solid ' + b.border + ';color:' + b.text + ';">' + b.label + '</span>';
-  });
-  html += '</div>';
-  html += '<p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:2rem;">' + app.desc + '</p>';
-  html += '<h2>Details</h2><ul>';
-  app.specifics.forEach(s => { html += '<li>' + s + '</li>'; });
-  html += '</ul>';
-  html += '<h2>General Privacy Policy</h2><p>For our complete privacy practices, please see our <a href="#" onclick="showPrivacyGeneral();return false;" style="color:var(--accent-blue);">General Privacy Policy</a>.</p>';
+  const badgesHTML = badges.map(b =>
+    `<span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:4px 12px;border-radius:100px;background:${b.color};border:0.5px solid ${b.border};color:${b.text};margin:4px 4px 4px 0;">${b.label}</span>`
+  ).join('');
+  const specificsHTML = app.specifics.map(s => `<li>${s}</li>`).join('');
 
-  document.getElementById('privacyAppContent').innerHTML = html;
+  document.getElementById('privacyAppContent').innerHTML = `
+    <button class="privacy-back" onclick="showPrivacyGeneral()">&larr; All apps privacy policy</button>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:0.5rem;">
+      <div style="width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;background:${app.bg};border:0.5px solid var(--border);">${app.icon}</div>
+      <div>
+        <h1 style="font-size:1.6rem;font-weight:500;letter-spacing:-0.02em;margin:0;">${appName}</h1>
+        <div class="privacy-meta" style="margin:0;padding:0;border:none;">${app.category}</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:0;margin-bottom:2rem;">${badgesHTML}</div>
+    <p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:2rem;">${app.desc}</p>
+    <h2>Details</h2>
+    <ul>${specificsHTML}</ul>
+    <h2>General Privacy Policy</h2>
+    <p>For our complete privacy practices, please see our <a href="#" onclick="showPrivacyGeneral();return false;" style="color:var(--accent-blue);">General Privacy Policy</a>.</p>
+  `;
   document.getElementById('mainPage').classList.add('hidden');
   document.getElementById('pagePrivacyGeneral').classList.remove('active');
   document.getElementById('pagePrivacyApp').classList.add('active');
