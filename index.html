@@ -413,7 +413,9 @@ function showPrivacyApp(appName) {
     <h2>Data practices in detail</h2>
     <ul>${specificsHTML}</ul>
     <h2>Third-party services</h2>
-    <p>This app does not use any third-party analytics, advertising, or tracking SDKs. Data synced via Apple services (iCloud, CloudKit, HealthKit) is governed by Apple's Privacy Policy.</p>
+    <p>This app does not include any third-party analytics, advertising, or tracking SDKs. The only external service used is Apple's own infrastructure (iCloud, CloudKit, StoreKit, etc.) where noted above, which is governed by Apple's Privacy Policy.</p>
+    <h2>Data deletion</h2>
+    <p>All data stored by this app can be deleted at any time by uninstalling the app from your device. If you have enabled iCloud sync, you can also delete your iCloud data by going to Settings → [Your Name] → iCloud → Manage Storage → ${appName} → Delete Data.</p>
     <h2>General Privacy Policy</h2>
     <p>For our complete privacy practices, please see our <a href="#" onclick="showPrivacyGeneral();return false;" style="color:var(--accent-blue);">General Privacy Policy</a>.</p>
   `;
