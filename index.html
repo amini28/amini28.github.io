@@ -97,10 +97,10 @@
 <nav>
   <a href="#" class="nav-logo" onclick="showMain(); return false;">Novriansyah Amini Saepudin</a>
   <ul class="nav-links">
-    <li><a href="#apps" onclick="showMain(); return false;">Apps</a></li>
-    <li><a href="#about" onclick="showMain(); return false;">About</a></li>
+    <li><a href="#apps" onclick="showMain('#apps')">Apps</a></li>
+    <li><a href="#about" onclick="showMain('#about')">About</a></li>
     <li><a href="#" onclick="showPrivacyGeneral(); return false;">Privacy</a></li>
-    <li><a href="#contact" onclick="showMain(); return false;">Contact</a></li>
+    <li><a href="#contact" onclick="showMain('#contact')">Contact</a></li>
   </ul>
 </nav>
 
@@ -111,7 +111,7 @@
     <p class="hero-desc">Independent iOS developer building apps that are fast, intuitive, and designed with care. Based in Jakarta, Indonesia.</p>
     <div class="hero-cta">
       <a href="#apps" class="btn btn-primary">View apps</a>
-      <a href="#contact" class="btn btn-secondary">Get in touch</a>
+      <a href="#contact" class="btn btn-secondary" onclick="showMain('#contact')">Get in touch</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -146,6 +146,8 @@
           <div class="app-links">
             <a class="app-link" href="#" onclick="showPrivacyApp('Helikoptelor'); return false;">Privacy</a>
             <a class="app-link" href="https://apps.apple.com/ee/app/helikoptelor/id6449776538" target="_blank">App Store ↗</a>
+            <a class="app-link" href="https://play.google.com/store/apps/details?id=com.naska.Helikoptelor&hl=id" target="_blank">Play Store ↗</a>
+            <a class="app-link" href="https://helikoptelor.com" target="_blank">Website ↗</a>
           </div>
         </div>
       </div>
@@ -159,6 +161,8 @@
           <div class="app-links">
             <a class="app-link" href="#" onclick="showPrivacyApp('Pluto by Naska'); return false;">Privacy</a>
             <a class="app-link" href="https://apps.apple.com/ee/app/pluto-by-naska/id6456224541" target="_blank">App Store ↗</a>
+            
+            
           </div>
         </div>
       </div>
@@ -172,6 +176,8 @@
           <div class="app-links">
             <a class="app-link" href="#" onclick="showPrivacyApp('SOME'); return false;">Privacy</a>
             <a class="app-link" href="https://apps.apple.com/ee/app/some/id6455903145" target="_blank">App Store ↗</a>
+            
+            
           </div>
         </div>
       </div>
@@ -185,6 +191,8 @@
           <div class="app-links">
             <a class="app-link" href="#" onclick="showPrivacyApp('Ulinan'); return false;">Privacy</a>
             <a class="app-link" href="https://apps.apple.com/ee/app/ulinan/id6451443217" target="_blank">App Store ↗</a>
+            
+            
           </div>
         </div>
       </div>
@@ -198,6 +206,8 @@
           <div class="app-links">
             <a class="app-link" href="#" onclick="showPrivacyApp('Kepo Cards'); return false;">Privacy</a>
             <a class="app-link" href="https://apps.apple.com/ee/app/kepo-cards/id6451437457" target="_blank">App Store ↗</a>
+            
+            
           </div>
         </div>
       </div>
@@ -305,18 +315,33 @@
 <script>
 const appPrivacy = {"Helikoptelor": {"icon": "🚁", "bg": "#dbeafe", "category": "Games", "dataCollected": false, "healthData": false, "iCloud": false, "camera": false, "notifications": false, "desc": "Helikoptelor is a game. It does not collect user data or require network access during gameplay.", "specifics": ["No personal data is collected, stored, or transmitted.", "No network connection is required during gameplay.", "No analytics or third-party SDKs are included.", "All game progress is stored locally on your device.", "No account creation is required."]}, "Pluto by Naska": {"icon": "🪐", "bg": "#ede9fe", "category": "Games", "dataCollected": false, "healthData": false, "iCloud": false, "camera": false, "notifications": false, "desc": "Pluto by Naska is a game app. It does not collect or transmit personal data.", "specifics": ["No personal data is collected or stored.", "All data is kept locally on your device.", "No analytics SDKs are included.", "No account or registration is required.", "No network access is required to play."]}, "SOME": {"icon": "📖", "bg": "#fef9c3", "category": "Reference", "dataCollected": false, "healthData": false, "iCloud": false, "camera": false, "notifications": false, "desc": "SOME is a reference app. It does not collect user data and functions entirely on-device.", "specifics": ["No personal data is collected or transmitted.", "Content is displayed from bundled or locally cached sources.", "No analytics or tracking is included.", "No account creation is required.", "Works offline — no internet connection needed."]}, "Ulinan": {"icon": "🎮", "bg": "#f0fdf4", "category": "Games", "dataCollected": false, "healthData": false, "iCloud": false, "camera": false, "notifications": false, "desc": "Ulinan is a standalone game. It does not collect personal data or include network features.", "specifics": ["No personal data is collected or stored.", "All game data is kept on your device only.", "No third-party analytics or advertising SDKs.", "No account or login is required.", "Fully functional without internet."]}, "Kepo Cards": {"icon": "🃏", "bg": "#fdf4ff", "category": "Games", "dataCollected": false, "healthData": false, "iCloud": false, "camera": false, "notifications": false, "desc": "Kepo Cards is a card game with rating 18+. It does not collect or share personal information.", "specifics": ["No personal data is collected, stored, or transmitted.", "No analytics or third-party SDKs are included.", "All gameplay data is stored locally on your device.", "No account or login is required.", "Content rated 18+ by App Store."]}};
 
-function showMain() {
-  document.getElementById('mainPage').classList.remove('hidden');
+function showMain(target) {
+  const mainPage = document.getElementById('mainPage');
+  const wasHidden = mainPage.classList.contains('hidden');
+  mainPage.classList.remove('hidden');
   document.getElementById('pagePrivacyGeneral').classList.remove('active');
   document.getElementById('pagePrivacyApp').classList.remove('active');
-  window.scrollTo(0, 0);
+  if (wasHidden) {
+    window.scrollTo(0, 0);
+    if (target) {
+      setTimeout(() => {
+        const el = document.querySelector(target);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+    }
+  } else if (target) {
+    const el = document.querySelector(target);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
 }
+
 function showPrivacyGeneral() {
   document.getElementById('mainPage').classList.add('hidden');
   document.getElementById('pagePrivacyGeneral').classList.add('active');
   document.getElementById('pagePrivacyApp').classList.remove('active');
   window.scrollTo(0, 0);
 }
+
 function showPrivacyApp(appName) {
   const app = appPrivacy[appName];
   if (!app) return;
@@ -333,7 +358,7 @@ function showPrivacyApp(appName) {
   const specificsHTML = app.specifics.map(s => `<li>${s}</li>`).join('');
 
   document.getElementById('privacyAppContent').innerHTML = `
-    <button class="privacy-back" onclick="showPrivacyGeneral()">&larr; All apps privacy policy</button>
+    <button class="privacy-back" onclick="showMain()">&larr; All apps privacy policy</button>
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:0.5rem;">
       <div style="width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;background:${app.bg};border:0.5px solid var(--border);">${app.icon}</div>
       <div>
